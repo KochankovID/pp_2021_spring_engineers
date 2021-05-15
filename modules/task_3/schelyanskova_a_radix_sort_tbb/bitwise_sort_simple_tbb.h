@@ -12,4 +12,4 @@ std::vector<int> Merge(const std::vector<int>& vect_left,
                           const std::vector<int>& vect_right);
 
 
-#endif  // MODULES_TASK_3_SCHELYANSKOVA_A_RADIX_SORT_TBB_BITWISE_SORT_SIMPLE_TBB_H_CMakeLists.txt
+#endif  // MODULES_TASK_3_SCHELYANSKOVA_A_RADIX_SORT_TBB_BITWISE_SORT_SIMPLE_TBB_H_

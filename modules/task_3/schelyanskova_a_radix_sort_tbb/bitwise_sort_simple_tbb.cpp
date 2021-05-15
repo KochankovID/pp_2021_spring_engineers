@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include "../../../modules/task_3/kolpa_fle/bitwise_sort_simple_tbb.h"
+#include "../../../modules/task_3/schelyanskova_a_radix_sort_tbb/bitwise_sort_simple_tbb.h"
 
 
 std::vector<int> getRandomVector(int sz) {
@@ -58,7 +58,8 @@ std::vector<int> RadixSort(std::vector<int> vect, int size) {
     max_power = get_max_power(vect);
     while (power <= max_power) {
         for (int i = 0; i < size; i++) {
-            tmp = (vect1[i] % static_cast<unsigned int>(pow(10, power)) / static_cast<unsigned int>(pow(10, power - 1)));
+            tmp = (vect1[i] % static_cast<unsigned int>(pow(10, power))
+                    / static_cast<unsigned int>(pow(10, power - 1)));
             vect_start[tmp].push_back(vect1[i]);
         }
         vect1.clear();
@@ -107,12 +108,10 @@ std::vector<int> RadixSort_tbb(std::vector<int> v) {
                       [&split_vec](const tbb::blocked_range<size_t>& range){
                           for (size_t i = range.begin(); i != range.end(); ++i) {
                               split_vec[i] = RadixSort(split_vec[i], split_vec[i].size());
-//                              std::copy(split_vec[i].begin(), split_vec[i].end(), std::ostream_iterator<int>(std::cout, "-"));
                           }
                       }, tbb::simple_partitioner());
 
     std::vector<int> merged = split_vec[0];
-//    std::copy(merged.begin(), merged.end(), std::ostream_iterator<int>(std::cout, " "));
     for (size_t i = 1; i < split_vec.size(); ++i) {
         merged = Merge(merged, split_vec[i]);
     }
