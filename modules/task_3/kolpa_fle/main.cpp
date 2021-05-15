@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <algorithm>
+#include <tbb/tbb.h>
 #include "./bitwise_sort_simple_tbb.h"
 
 
@@ -68,15 +69,15 @@ TEST(RadixSort_tbb, works_random_size_10000) {
 TEST(RadixSort_tbb, get_time) {
     auto vect = getRandomVector(1000000);
 
-//    tbb::tick_count t0 = tbb::tick_count::now();
+    tbb::tick_count t0 = tbb::tick_count::now();
     auto p_sorted = RadixSort_tbb(vect);
-//    tbb::tick_count t1 = tbb::tick_count::now();
-//    std::cout << "Parallel sort time: " << (t1 - t0).seconds() << std::endl;
+    tbb::tick_count t1 = tbb::tick_count::now();
+    std::cout << "Parallel sort time: " << (t1 - t0).seconds() << std::endl;
 
-//    tbb::tick_count t2 = tbb::tick_count::now();
+    tbb::tick_count t2 = tbb::tick_count::now();
     auto l_sorted = RadixSort(vect, vect.size());
-//    tbb::tick_count t3 = tbb::tick_count::now();
-//    std::cout << "Linear sort time: " << (t3 - t2).seconds() << std::endl;
+    tbb::tick_count t3 = tbb::tick_count::now();
+    std::cout << "Linear sort time: " << (t3 - t2).seconds() << std::endl;
 
     ASSERT_EQ(p_sorted, l_sorted);
 }
