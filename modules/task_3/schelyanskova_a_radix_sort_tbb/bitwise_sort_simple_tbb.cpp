@@ -1,4 +1,4 @@
-// Copyright 2021 Kochankov Ilya
+// Copyright 2021 Schelyanskova Anastasiia
 #include <tbb/tbb.h>
 #include <random>
 #include <vector>
