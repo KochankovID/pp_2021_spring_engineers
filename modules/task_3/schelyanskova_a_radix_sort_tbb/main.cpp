@@ -1,8 +1,8 @@
 // Copyright 2021 Schelyanskova Anastasiia
 #include <gtest/gtest.h>
+#include <tbb/tbb.h>
 #include <vector>
 #include <algorithm>
-#include <tbb/tbb.h>
 #include "./bitwise_sort_simple_tbb.h"
 
 
